@@ -25,7 +25,7 @@ public class MealServlet extends HttpServlet {
         LOG.debug("redirect to meals");
 
         request.setAttribute("meals",
-                MealsUtil.getWithExceeded(MealsUtil.MEAL_LIST,2000));
+                MealsUtil.getWithExceeded(MealsUtil.MEALS,MealsUtil.DEFAULT_CALORIES_PER_DAY));
         request.getRequestDispatcher("/meals.jsp").forward(request,response);
     }
 }
