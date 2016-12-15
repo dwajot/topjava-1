@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.MealWithExceed;
 import ru.javawebinar.topjava.util.MealsUtil;
 
@@ -19,13 +20,12 @@ import static org.slf4j.LoggerFactory.getLogger;
  * Created by Artem on 14.12.2016.
  */
 public class MealServlet extends HttpServlet {
-    private static final Logger LOG = getLogger(UserServlet.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MealServlet.class);
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        LOG.debug("redirect to meals");
-
-        request.setAttribute("meals",
-                MealsUtil.getWithExceeded(MealsUtil.MEALS,MealsUtil.DEFAULT_CALORIES_PER_DAY));
-        request.getRequestDispatcher("/meals.jsp").forward(request,response);
+        LOG.info("getAll");
+        request.setAttribute("meals", MealsUtil.getWithExceeded(MealsUtil.MEALS, MealsUtil.DEFAULT_CALORIES_PER_DAY));
+        request.getRequestDispatcher("/meals.jsp").forward(request, response);
     }
 }
