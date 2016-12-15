@@ -56,7 +56,6 @@
             <th width="120"><b>Calories</b></th>
             <th width="120"><b>Date</b></th>
         </tr>
-
         <c:forEach items="${meals}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
             <tr>
