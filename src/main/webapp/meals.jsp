@@ -13,7 +13,8 @@
             border-color: #ccc;
         }
 
-        .tg td {
+        .normal {
+            color: green;
             font-family: Arial, sans-serif;
             font-size: 14px;
             padding: 10px 5px;
@@ -22,7 +23,18 @@
             overflow: hidden;
             word-break: normal;
             border-color: #ccc;
-            color: #333;
+            background-color: #fff;
+        }
+        .exceeded {
+            color: red;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            padding: 10px 5px;
+            border-style: solid;
+            border-width: 1px;
+            overflow: hidden;
+            word-break: normal;
+            border-color: #ccc;
             background-color: #fff;
         }
 
@@ -43,6 +55,7 @@
         .tg .tg-4eph {
             background-color: #f9f9f9
         }
+
     </style>
 </head>
 <body>
@@ -58,7 +71,7 @@
         </tr>
         <c:forEach items="${meals}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
-            <tr class="tg ">
+            <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
                 <td>${meal.dateTime}</td>
