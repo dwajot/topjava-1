@@ -61,7 +61,7 @@ public class MealServlet extends HttpServlet {
                     new Meal(LocalDateTime.now(),"",1000):
                     repository.get(getId(request));
             request.setAttribute("meal", meal);
-            request.getRequestDispatcher("mealEdit.jsp").forward(request,response);
+            request.getRequestDispatcher("meal.jsp").forward(request,response);
         }
     }
 
