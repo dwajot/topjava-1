@@ -3,8 +3,8 @@ package ru.javawebinar.topjava.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.repository.InMemoryUserMealRepository;
-import ru.javawebinar.topjava.repository.UserMealRepository;
+import ru.javawebinar.topjava.repository.InMemoryMealRepositoryImpl;
+import ru.javawebinar.topjava.repository.MealRepository;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletConfig;
@@ -23,12 +23,12 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class MealServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(MealServlet.class);
-    private UserMealRepository repository;
+    private MealRepository repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        repository = new InMemoryUserMealRepository();
+        repository = new InMemoryMealRepositoryImpl();
     }
 
     @Override

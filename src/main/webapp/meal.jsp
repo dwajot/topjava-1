@@ -36,7 +36,7 @@
         </dl>
         <dl>
             <dt>Description:</dt>
-            <dd><input type="text" value="${meal.description}" size="40" name="description"></dd>
+            <dd><input type="text" value="${meal.description}" size=40 name="description"></dd>
         </dl>
         <dl>
             <dt>Calories:</dt>
