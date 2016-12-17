@@ -23,8 +23,8 @@
             <th width="120"><b>Description</b></th>
             <th width="120"><b>Calories</b></th>
             <th width="120"><b>Date</b></th>
-            <th width="120"><b>Update</b></th>
-            <th width="120"><b>Delete</b></th>
+            <th><b>Update</b></th>
+            <th><b>Delete</b></th>
         </tr>
         <c:forEach items="${meals}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
