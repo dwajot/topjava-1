@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-
+<h2><a href="index.html">Home</a></h2>
 <center>
     <h1>Meals</h1>
 
