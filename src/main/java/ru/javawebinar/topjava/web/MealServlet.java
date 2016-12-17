@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.InMemoryUserMealRepository;
+import ru.javawebinar.topjava.repository.UserMealRepository;
 import ru.javawebinar.topjava.util.MealsUtil;
 
 import javax.servlet.ServletConfig;
@@ -22,7 +23,7 @@ import static org.slf4j.LoggerFactory.getLogger;
  */
 public class MealServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(MealServlet.class);
-    private InMemoryUserMealRepository repository;
+    private UserMealRepository repository;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -34,12 +35,12 @@ public class MealServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
-        Meal userMeal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
+        Meal meal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
                 LocalDateTime.parse(request.getParameter("dateTime")),
                 request.getParameter("description"),
                 Integer.valueOf(request.getParameter("calories")));
-        LOG.info(userMeal.isNew()?"Create {}" : "Delete {}" , userMeal);
-        repository.save(userMeal);
+        LOG.info(meal.isNew()?"Create {}" : "Delete {}" , meal);
+        repository.save(meal);
         response.sendRedirect("meals");
     }
 
@@ -51,12 +52,12 @@ public class MealServlet extends HttpServlet {
             LOG.info("getAll");
             request.setAttribute("meals", MealsUtil.getWithExceeded(MealsUtil.MEALS, MealsUtil.DEFAULT_CALORIES_PER_DAY));
             request.getRequestDispatcher("/meals.jsp").forward(request, response);
-        }else if(action.equals("delete")){
+        }else if("delete".equals(action)){
             int id = getId(request);
             LOG.info("Delete {}", id);
             repository.delete(id);
             response.sendRedirect("meals");
-        }else {
+        }else if("create".equals(action) || "update".equals(action)) {
             final Meal meal = action.equals("create")?
                     new Meal(LocalDateTime.now(),"",1000):
                     repository.get(getId(request));

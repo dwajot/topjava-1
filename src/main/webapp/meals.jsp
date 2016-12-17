@@ -5,7 +5,6 @@
 <html>
 <head>
     <title>Meals</title>
-
     <style type="text/css">
         .normal{
             color: green;
@@ -19,7 +18,6 @@
 <h2><a href="index.html">Home</a></h2>
 <center>
     <h1>Meals</h1>
-
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
             <th width="120"><b>Description</b></th>
