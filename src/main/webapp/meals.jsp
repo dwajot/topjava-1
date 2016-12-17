@@ -20,9 +20,9 @@
     <h1>Meals</h1>
     <table border="1" cellpadding="8" cellspacing="0">
         <tr>
-            <th width="120"><b>Description</b></th>
-            <th width="120"><b>Calories</b></th>
-            <th width="120"><b>Date</b></th>
+            <th><b>Description</b></th>
+            <th><b>Calories</b></th>
+            <th><b>Date</b></th>
             <th><b>Update</b></th>
             <th><b>Delete</b></th>
         </tr>
