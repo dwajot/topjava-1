@@ -28,7 +28,7 @@
             <th width="120"><b>Update</b></th>
             <th width="120"><b>Delete</b></th>
         </tr>
-        <c:forEach items="${mealList}" var="meal">
+        <c:forEach items="${meals}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.MealWithExceed"/>
             <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
                 <td>${meal.description}</td>

@@ -49,7 +49,7 @@ public class MealServlet extends HttpServlet {
 
         if(action == null){
             LOG.info("getAll");
-            request.setAttribute("mealList", MealsUtil.getWithExceeded(MealsUtil.MEALS, MealsUtil.DEFAULT_CALORIES_PER_DAY));
+            request.setAttribute("meals", MealsUtil.getWithExceeded(MealsUtil.MEALS, MealsUtil.DEFAULT_CALORIES_PER_DAY));
             request.getRequestDispatcher("/meals.jsp").forward(request, response);
         }else if(action.equals("delete")){
             int id = getId(request);
