@@ -16,8 +16,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-import static org.slf4j.LoggerFactory.getLogger;
-
 /**
  * Created by Artem on 14.12.2016.
  */
