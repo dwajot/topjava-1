@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.Meal;
+import ru.javawebinar.topjava.util.MealsUtil;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -17,13 +18,7 @@ public class InMemoryUserMealRepository implements UserMealRepository {
     private AtomicInteger counter = new AtomicInteger(0);
 
     {
-                save(new Meal(LocalDateTime.of(2015, Month.MAY, 30, 10, 0), "Завтрак", 500));
-                new Meal(LocalDateTime.of(2015, Month.MAY, 30, 13, 0), "Обед", 1000),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 30, 20, 0), "Ужин", 500),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 10, 0), "Завтрак", 1000),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 13, 0), "Обед", 500),
-                new Meal(LocalDateTime.of(2015, Month.MAY, 31, 20, 0), "Ужин", 510)
-
+        MealsUtil.MEALS.forEach(this::save);
     }
 
     @Override
@@ -31,21 +26,22 @@ public class InMemoryUserMealRepository implements UserMealRepository {
         if(userMeal.isNew()){
             userMeal.setId(counter.incrementAndGet());
         }
-        return repository.put(userMeal.getId(),userMeal);
+        repository.put(userMeal.getId(),userMeal);
+        return userMeal;
     }
 
     @Override
     public void delete(int id) {
-
+        repository.remove(id);
     }
 
     @Override
     public Meal get(int id) {
-        return null;
+        return repository.get(id);
     }
 
     @Override
     public Collection<Meal> getAll() {
-        return null;
+        return repository.values();
     }
 }
