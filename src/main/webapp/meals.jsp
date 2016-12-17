@@ -6,7 +6,7 @@
 <head>
     <title>Meals</title>
     <style type="text/css">
-        .normal{
+        .normal {
             color: green;
         }
         .exceeded {
